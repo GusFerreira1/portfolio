@@ -359,6 +359,9 @@ img{ max-width:100%; display:block; }
 }
 .card.virado .card-interno{ transform:rotateY(180deg); }
 
+/* Card com resultado direto */
+.card--resultado{ cursor:pointer; }
+
 .face{
   position:absolute; inset:0;
   backface-visibility:hidden; -webkit-backface-visibility:hidden;
@@ -671,7 +674,9 @@ img{ max-width:100%; display:block; }
       <div class="trilho" id="trilho">
 
         <!-- CARD 1 -->
-        <article class="card revelar" role="button" tabindex="0" aria-label="Entrega 1: Capa do Meu Álbum">
+        <article class="card revelar card--resultado" role="link" tabindex="0"
+                 aria-label="Entrega 1: Capa do Meu Álbum. Clique para abrir o resultado."
+                 data-redirecionamento="capa-do-meu-album.png">
           <div class="card-interno">
             <div class="face">
               <span class="numero">01</span>
@@ -679,53 +684,47 @@ img{ max-width:100%; display:block; }
               <p class="data">[PREENCHER — data]</p>
               <p class="aprendi"></p>
               <span class="selo">Concluída</span>
-              <p class="dica-virar">Clique para ver detalhes</p>
-            </div>
-            <div class="face face--verso">
-              <h3>O que aprendi</h3>
-              <p class="aprendi">[PREENCHER — uma linha sobre o que você aprendeu nesta entrega]</p>
-              <a class="link" href="[PREENCHER — link da pasta no GitHub]">Abrir pasta no GitHub</a>
-              <span class="selo" style="margin-top:14px">Concluída</span>
+              <p class="dica-virar">Clique para abrir o resultado</p>
             </div>
           </div>
         </article>
 
-        <!-- CARD 2 -->
-        <article class="card revelar" role="button" tabindex="0" aria-label="Entrega 2: Dashboard Quem Sou Eu">
+        <!-- CARD 2 — ainda não entregue -->
+        <article class="card card--breve revelar" role="button" tabindex="0"
+                 aria-label="Entrega 2: Dashboard Quem Sou Eu, em breve">
           <div class="card-interno">
             <div class="face">
               <span class="numero">02</span>
               <h3>Dashboard Quem Sou Eu</h3>
               <p class="data">[PREENCHER — data]</p>
               <p class="aprendi"></p>
-              <span class="selo">Concluída</span>
+              <span class="selo">Em breve</span>
               <p class="dica-virar">Clique para ver detalhes</p>
             </div>
             <div class="face face--verso">
-              <h3>O que aprendi</h3>
-              <p class="aprendi">[PREENCHER — uma linha sobre o que você aprendeu nesta entrega]</p>
-              <a class="link" href="[PREENCHER — link da pasta no GitHub]">Abrir pasta no GitHub</a>
-              <span class="selo" style="margin-top:14px">Concluída</span>
+              <h3>Ainda não entregue</h3>
+              <p class="aprendi">[PREENCHER — o que você aprendeu, quando entregar]</p>
+              <span class="selo">Em breve</span>
             </div>
           </div>
         </article>
 
-        <!-- CARD 3 -->
-        <article class="card revelar" role="button" tabindex="0" aria-label="Entrega 3: Árvore das Profissões 2.0">
+        <!-- CARD 3 — ainda não entregue -->
+        <article class="card card--breve revelar" role="button" tabindex="0"
+                 aria-label="Entrega 3: Árvore das Profissões 2.0, em breve">
           <div class="card-interno">
             <div class="face">
               <span class="numero">03</span>
               <h3>Árvore das Profissões 2.0</h3>
               <p class="data">[PREENCHER — data]</p>
               <p class="aprendi"></p>
-              <span class="selo">Concluída</span>
+              <span class="selo">Em breve</span>
               <p class="dica-virar">Clique para ver detalhes</p>
             </div>
             <div class="face face--verso">
-              <h3>O que aprendi</h3>
-              <p class="aprendi">[PREENCHER — uma linha sobre o que você aprendeu nesta entrega]</p>
-              <a class="link" href="[PREENCHER — link da pasta no GitHub]">Abrir pasta no GitHub</a>
-              <span class="selo" style="margin-top:14px">Concluída</span>
+              <h3>Ainda não entregue</h3>
+              <p class="aprendi">[PREENCHER — o que você aprendeu, quando entregar]</p>
+              <span class="selo">Em breve</span>
             </div>
           </div>
         </article>
@@ -933,20 +932,41 @@ trilho.addEventListener("pointerleave", pararArraste);
 ------------------------------------------------------------ */
 document.querySelectorAll(".card").forEach((card) => {
 
+  /* A Capa do Meu Álbum abre diretamente o resultado entregue. */
+  if(card.dataset.redirecionamento){
+    const abrirResultado = () => {
+      window.location.href = card.dataset.redirecionamento;
+    };
+    card.addEventListener("click", (e) => {
+      if(distancia > 6) return;
+      abrirResultado();
+    });
+    card.addEventListener("keydown", (e) => {
+      if(e.key === "Enter" || e.key === " "){
+        e.preventDefault();
+        abrirResultado();
+      }
+    });
+  }
+
   /* Clique vira o card — mas ignora o clique se a pessoa estava arrastando */
-  card.addEventListener("click", (e) => {
+  if(!card.dataset.redirecionamento){
+    card.addEventListener("click", (e) => {
     if(distancia > 6) return;
     if(e.target.closest("a")) return; /* clique no link não vira o card */
-    card.classList.toggle("virado");
-  });
+      card.classList.toggle("virado");
+    });
+  }
 
   /* Teclado: Enter ou Espaço também viram o card (acessibilidade) */
-  card.addEventListener("keydown", (e) => {
-    if(e.key === "Enter" || e.key === " "){
-      e.preventDefault();
-      card.classList.toggle("virado");
-    }
-  });
+  if(!card.dataset.redirecionamento){
+    card.addEventListener("keydown", (e) => {
+      if(e.key === "Enter" || e.key === " "){
+        e.preventDefault();
+        card.classList.toggle("virado");
+      }
+    });
+  }
 
   /* Inclinação 3D acompanhando o mouse */
   if(semMovimento) return;
