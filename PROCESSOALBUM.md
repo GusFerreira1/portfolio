@@ -9,7 +9,7 @@ Para a criação da capa e da lista de faixas, a ideia foi colocar no papel quem
 - **As cores:** Limitei o visual a três cores (**Vermelho, Amarelo e Preto**) para dar um tom bem marcante, dramático e direto ao ponto.
 - **A tipografia e nome:** O meu nome artístico (**GUESS**) ficou destacado logo abaixo da luz, enquanto a frase **"Só sei que nada sei"** contorna a parte de cima da imagem.
 
-### As faixas (O significado por trás das músicas)
+### As faixas (Por que eu escolhi)
 1. **JESUS CRISTO** — Acredito em Jesus Cristo, porque é Ele quem me dá força, direção e esperança mesmo nos dias mais difíceis.
 2. **VERDADE ACIMA DE TUDO** — A honestidade é um valor importante para mim, pois prefiro sempre falar a verdade e agir de forma correta.
 3. **SEM MÁSCARAS** — Me considero um cara honesto, que procura ser verdadeiro com as pessoas e comigo mesmo.
