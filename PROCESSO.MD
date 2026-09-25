@@ -17,7 +17,7 @@ Crie uma landing page em um único arquivo `index.html` (HTML, CSS e JavaScript 
 
 ---
 
-## 2. O que a IA entregou
+## 2. O que a IA
 
 A IA gerou a primeira versão da página contendo:
 - **Cabeçalho:** Nome de exibição e alternador de tema (Claro/Escuro).
