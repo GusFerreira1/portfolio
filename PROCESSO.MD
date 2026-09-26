@@ -13,7 +13,7 @@ Crie uma landing page em um único arquivo `index.html` (HTML, CSS e JavaScript 
 - **Equipe que torço na F1:** Ferrari
 - **O que eu quero fazer no futuro:** Trabalhar na área de TI
 - **Hobby / Curiosidade:** Sou quieto, gosto de passar a maior parte do tempo jogando videogame (jogar online é um interesse que pouca gente sabe)
-- **Música no rodapé:** *Highest in the Room*
+- **Música no rodapé:** Highest in the Room
 
 ---
 
