@@ -10,43 +10,33 @@
 <html lang="pt-BR" data-tema="claro">
 <head>
   <meta charset="UTF-8">
-  <!-- viewport: faz a página se adaptar à largura do celular -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gustavo Ferreira — Portfólio</title>
   <meta name="description" content="Portfólio de Gustavo Ferreira, estudante do técnico em Informática para a Internet.">
 
-  <!-- Fontes do Google: Space Grotesk (títulos) e Inter (texto corrido) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* ============================================================
-   1. VARIÁVEIS DE COR (tokens)
-   As cores da paleta escolhida ficam declaradas aqui no :root.
-   O tema escuro apenas troca fundo/texto/superfície.
-   ============================================================ */
 :root{
-  --fundo:      #FFFFFF;   /* fundo da página            */
-  --texto:      #111111;   /* cor do texto               */
-  --primaria:   #1D3FBB;   /* azul principal             */
-  --secundaria: #E8E8E8;   /* cinza de apoio/superfícies */
-  --destaque:   #E63946;   /* vermelho de destaque       */
+  --fundo:      #FFFFFF;
+  --texto:      #111111;
+  --primaria:   #1D3FBB;
+  --secundaria: #E8E8E8;
+  --destaque:   #E63946;
 
-  /* Derivados usados na interface (sempre a partir da paleta acima) */
   --superficie: var(--secundaria);
   --borda: rgba(17,17,17,.14);
-  --texto-suave: #3A3A3A;        /* contraste ~10:1 no branco (AA ok) */
+  --texto-suave: #3A3A3A;
   --sombra: 0 10px 30px rgba(17,17,17,.10);
 
-  /* Medidas e tempos */
   --raio: 14px;
-  --dur: .5s;                     /* duração padrão das animações */
+  --dur: .5s;
   --ease: cubic-bezier(.22,.8,.3,1);
   --largura: 1080px;
 }
 
-/* Tema escuro: só as cores neutras mudam; azul e vermelho continuam iguais */
 html[data-tema="escuro"]{
   --fundo:      #0E1116;
   --texto:      #F2F4F8;
@@ -56,14 +46,11 @@ html[data-tema="escuro"]{
   --texto-suave: #C7CDD8;
   --sombra: 0 10px 30px rgba(0,0,0,.45);
 }
-/* No escuro o azul puro fica pouco legível: clareamos só o texto em azul */
+
 html[data-tema="escuro"] .link,
 html[data-tema="escuro"] .rotulo,
 html[data-tema="escuro"] .sem-foto{ color:#8FA8FF; }
 
-/* ============================================================
-   2. RESET BÁSICO E TIPOGRAFIA
-   ============================================================ */
 *,*::before,*::after{ box-sizing:border-box; }
 html{ scroll-behavior:smooth; }
 body{
@@ -74,7 +61,7 @@ body{
   font-size:17px;
   line-height:1.65;
   -webkit-font-smoothing:antialiased;
-  overflow-x:hidden; /* evita barra horizontal por causa das ondas */
+  overflow-x:hidden;
   transition:background var(--dur) var(--ease), color var(--dur) var(--ease);
 }
 h1,h2,h3,.fonte-titulo{
@@ -83,18 +70,16 @@ h1,h2,h3,.fonte-titulo{
   letter-spacing:-.02em;
   margin:0 0 .4em;
 }
-p{ margin:0 0 1em; max-width:66ch; } /* linha curta = leitura confortável */
+p{ margin:0 0 1em; max-width:66ch; }
 a{ color:inherit; }
 img{ max-width:100%; display:block; }
 
-/* Foco visível pelo teclado (acessibilidade) */
 :focus-visible{
   outline:3px solid var(--destaque);
   outline-offset:3px;
   border-radius:4px;
 }
 
-/* Container central */
 .container{
   width:100%;
   max-width:var(--largura);
@@ -102,10 +87,8 @@ img{ max-width:100%; display:block; }
   padding-inline:20px;
 }
 
-/* Espaçamento vertical padrão das seções */
 .secao{ padding:88px 0 96px; position:relative; }
 
-/* Título de seção com um traço vermelho curto ao lado */
 .titulo-secao{
   font-size:clamp(1.7rem, 4.5vw, 2.6rem);
   display:flex; align-items:center; gap:14px;
@@ -115,9 +98,6 @@ img{ max-width:100%; display:block; }
   background:var(--destaque); border-radius:3px;
 }
 
-/* ============================================================
-   3. BARRA DE PROGRESSO DE LEITURA (microinteração do topo)
-   ============================================================ */
 #progresso{
   position:fixed; inset:0 auto auto 0;
   height:4px; width:100%;
@@ -126,9 +106,6 @@ img{ max-width:100%; display:block; }
   z-index:60;
 }
 
-/* ============================================================
-   4. CABEÇALHO FIXO (nome + botão de tema)
-   ============================================================ */
 .topo-fixo{
   position:fixed; top:0; left:0; right:0; z-index:50;
   display:flex; align-items:center; justify-content:space-between;
@@ -155,9 +132,6 @@ img{ max-width:100%; display:block; }
 }
 .botao-tema:hover{ border-color:var(--primaria); background:var(--superficie); }
 
-/* ============================================================
-   5. NAVEGAÇÃO POR BOLINHAS NA LATERAL
-   ============================================================ */
 .pontos{
   position:fixed; right:16px; top:50%; transform:translateY(-50%);
   z-index:45; display:flex; flex-direction:column; gap:14px;
@@ -172,22 +146,16 @@ img{ max-width:100%; display:block; }
   transform:scale(1.35);
 }
 .pontos a:hover{ opacity:.85; }
-/* texto escondido só para leitores de tela */
 .oculto-visual{
   position:absolute; width:1px; height:1px; overflow:hidden;
   clip:rect(0 0 0 0); white-space:nowrap;
 }
 
-/* ============================================================
-   6. TOPO / HERO — texto à esquerda, foto redonda à direita,
-      com fundo em gradiente que se move devagar.
-   ============================================================ */
 .hero{
   position:relative; overflow:hidden;
   padding:132px 0 96px;
   border-bottom:1px solid var(--borda);
 }
-/* Camada do gradiente animado (fica atrás do conteúdo) */
 .hero::before{
   content:""; position:absolute; inset:-30%;
   z-index:0;
@@ -195,7 +163,7 @@ img{ max-width:100%; display:block; }
     radial-gradient(38% 46% at 22% 28%, color-mix(in srgb, var(--primaria) 26%, transparent), transparent 70%),
     radial-gradient(34% 42% at 78% 66%, color-mix(in srgb, var(--destaque) 24%, transparent), transparent 70%),
     radial-gradient(40% 40% at 55% 92%, color-mix(in srgb, var(--primaria) 14%, transparent), transparent 70%);
-  animation:girar 26s linear infinite; /* movimento lento e contínuo */
+  animation:girar 26s linear infinite;
 }
 @keyframes girar{
   from{ transform:rotate(0deg) scale(1.05); }
@@ -203,7 +171,6 @@ img{ max-width:100%; display:block; }
 }
 .hero .container{ position:relative; z-index:1; }
 
-/* ---- Carrinhos que passam correndo no topo do hero ---- */
 .pista-carros{
   position:absolute; top:0; left:0; right:0; height:100%;
   z-index:0; overflow:hidden; pointer-events:none;
@@ -212,7 +179,6 @@ img{ max-width:100%; display:block; }
   position:absolute; width:52px; opacity:.85;
   animation-name:passar; animation-timing-function:linear; animation-iteration-count:infinite;
 }
-/* cada carrinho tem sua altura, duração e atraso, pra não ficarem em fila */
 .carrinho-passando:nth-child(1){ top:14%;  width:46px; animation-duration:9s;  animation-delay:0s; }
 .carrinho-passando:nth-child(2){ top:78%;  width:60px; animation-duration:13s; animation-delay:-4s; }
 .carrinho-passando:nth-child(3){ top:46%;  width:38px; animation-duration:16s; animation-delay:-9s; }
@@ -220,7 +186,6 @@ img{ max-width:100%; display:block; }
   from{ transform:translateX(-15%); }
   to  { transform:translateX(115vw); }
 }
-/* No celular a pista fica só na faixa de cima, pra não brigar com o texto */
 @media (max-width:860px){
   .pista-carros{ height:120px; }
 }
@@ -236,7 +201,7 @@ img{ max-width:100%; display:block; }
 .hero h1{
   font-size:clamp(2.6rem, 8.5vw, 4.6rem);
   font-weight:700;
-  cursor:pointer; /* dá a dica de que dá pra clicar */
+  cursor:pointer;
   display:inline-block;
   transition:transform .25s var(--ease);
 }
@@ -257,7 +222,6 @@ img{ max-width:100%; display:block; }
   border:1px solid var(--borda); background:var(--superficie);
 }
 
-/* Foto/avatar em círculo com anel vermelho */
 .moldura{
   justify-self:center;
   width:min(300px, 72vw); aspect-ratio:1;
@@ -272,20 +236,15 @@ img{ max-width:100%; display:block; }
 .moldura img, .sem-foto{
   width:100%; height:100%; border-radius:50%; object-fit:cover;
 }
-/* Avatar com a letra G: aparece enquanto não existir o arquivo foto.jpg */
 .sem-foto{
   display:none; place-items:center;
   background:var(--fundo); color:var(--primaria);
   font-family:"Space Grotesk", sans-serif; font-weight:700;
   font-size:clamp(5rem, 22vw, 9rem); line-height:1;
-  /* leve deslocamento para o G ficar opticamente centralizado no círculo */
   padding-bottom:.06em;
   user-select:none;
 }
 
-/* ============================================================
-   7. FAIXA FERRARI — o detalhe que só existe nesta página
-   ============================================================ */
 .faixa-ferrari{
   position:relative; z-index:1;
   margin-top:52px;
@@ -301,26 +260,17 @@ img{ max-width:100%; display:block; }
   font-size:1.15rem; letter-spacing:.02em;
 }
 .faixa-ferrari small{ display:block; font-size:.84rem; opacity:.92; }
-/* Carrinho desenhado em SVG que desliza de leve dentro da faixa */
 .carro{ width:60px; flex:none; animation:acelerar 6s var(--ease) infinite; }
 @keyframes acelerar{
   0%,100%{ transform:translateX(0); }
   50%    { transform:translateX(10px); }
 }
 
-/* ============================================================
-   8. ONDA: divisória entre as seções
-   ============================================================ */
 .onda{ display:block; width:100%; height:64px; }
 .onda path{ fill:var(--superficie); }
 .onda--volta path{ fill:var(--fundo); }
-
-/* Seção com fundo de superfície (cinza claro / cinza escuro no tema escuro) */
 .fundo-superficie{ background:var(--superficie); }
 
-/* ============================================================
-   9. SOBRE MIM
-   ============================================================ */
 .sobre-grade{ display:grid; grid-template-columns:1fr 1fr; gap:40px; }
 .sobre-grade p{ font-size:1.04rem; }
 .destaque-lateral{
@@ -328,14 +278,11 @@ img{ max-width:100%; display:block; }
   padding-left:18px;
 }
 
-/* ============================================================
-   10. ENTREGAS — carrossel horizontal de vira-cards
-   ============================================================ */
 .trilho{
   display:flex; gap:22px;
   overflow-x:auto; scroll-snap-type:x mandatory;
   padding:26px 20px 34px;
-  margin-inline:calc(50% - 50vw); /* o carrossel vaza até as bordas da tela */
+  margin-inline:calc(50% - 50vw);
   padding-inline:max(20px, calc(50vw - var(--largura)/2));
   cursor:grab;
   scrollbar-width:thin;
@@ -344,7 +291,6 @@ img{ max-width:100%; display:block; }
 .trilho::-webkit-scrollbar{ height:8px; }
 .trilho::-webkit-scrollbar-thumb{ background:var(--borda); border-radius:99px; }
 
-/* Cada card tem perspectiva para o efeito 3D */
 .card{
   flex:0 0 288px; height:340px;
   perspective:1100px; scroll-snap-align:center;
@@ -358,9 +304,6 @@ img{ max-width:100%; display:block; }
   transform-style:preserve-3d;
 }
 .card.virado .card-interno{ transform:rotateY(180deg); }
-
-/* Card com resultado direto */
-.card--resultado{ cursor:pointer; }
 
 .face{
   position:absolute; inset:0;
@@ -376,10 +319,17 @@ img{ max-width:100%; display:block; }
   font-size:2.6rem; color:var(--primaria); line-height:1;
 }
 .card h3{ font-size:1.22rem; margin-top:14px; }
-.data{ font-size:.85rem; color:var(--texto-suave); margin:0; }
-.aprendi{ font-size:.95rem; color:var(--texto-suave); flex:1; }
+.data{ font-size:.85rem; color:var(--texto-suave); margin:0 0 10px; }
+.aprendi{ font-size:.92rem; color:var(--texto-suave); flex:1; }
 .dica-virar{
   font-size:.8rem; color:var(--primaria); font-weight:600; margin:0;
+}
+.acoes-card{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  margin-top:10px;
+}
+.acoes-card .link{
+  font-size:.82rem;
 }
 .selo{
   align-self:flex-start; margin-top:auto;
@@ -387,12 +337,10 @@ img{ max-width:100%; display:block; }
   padding:4px 11px; border-radius:999px;
   border:1px solid var(--primaria); color:var(--primaria);
 }
-/* Cards ainda não entregues ficam apagados e sem link */
 .card--breve .face{ opacity:.55; }
 .card--breve .selo{ border-color:var(--texto-suave); color:var(--texto-suave); }
 .card--breve .numero{ color:var(--texto-suave); }
 
-/* Link com sublinhado animado (estilo escolhido para botões/links) */
 .link{
   color:var(--primaria); font-weight:600; text-decoration:none;
   background-image:linear-gradient(currentColor, currentColor);
@@ -402,9 +350,6 @@ img{ max-width:100%; display:block; }
 }
 .link:hover, .link:focus-visible{ background-size:100% 2px; }
 
-/* ============================================================
-   11. MANIFESTO (recolhido com botão)
-   ============================================================ */
 .caixa-manifesto{
   border:1px solid var(--borda); border-radius:var(--raio);
   background:var(--fundo); padding:28px; box-shadow:var(--sombra);
@@ -414,7 +359,6 @@ img{ max-width:100%; display:block; }
   transition:max-height var(--dur) var(--ease);
 }
 .texto-manifesto.aberto{ max-height:3000px; }
-/* Degradê de "corte" no fim do texto enquanto está recolhido */
 .texto-manifesto::after{
   content:""; position:absolute; left:0; right:0; bottom:0; height:90px;
   background:linear-gradient(transparent, var(--fundo));
@@ -431,9 +375,6 @@ img{ max-width:100%; display:block; }
 }
 .botao:hover{ background:var(--destaque); transform:translateY(-2px); }
 
-/* ============================================================
-   12. RODAPÉ
-   ============================================================ */
 .rodape{
   background:var(--superficie);
   border-top:1px solid var(--borda);
@@ -445,7 +386,6 @@ img{ max-width:100%; display:block; }
   display:flex; align-items:center; gap:10px;
   font-size:.9rem; color:var(--texto-suave);
 }
-/* Três barrinhas animadas, como um player de música */
 .equalizador{ display:flex; align-items:flex-end; gap:3px; height:16px; }
 .equalizador span{
   width:3px; background:var(--destaque); border-radius:2px;
@@ -457,22 +397,16 @@ img{ max-width:100%; display:block; }
   0%,100%{ height:5px; } 50%{ height:16px; }
 }
 
-/* ============================================================
-   13. ANIMAÇÃO DE ENTRADA AO ROLAR (um de cada vez)
-   ============================================================ */
 .revelar{
   opacity:0; transform:translateY(26px);
   transition:opacity .6s var(--ease), transform .6s var(--ease);
 }
 .revelar.visivel{ opacity:1; transform:none; }
 
-/* ============================================================
-   14. CELULAR (testado mentalmente em 360 px)
-   ============================================================ */
 @media (max-width:860px){
   .hero-grade, .sobre-grade{ grid-template-columns:1fr; }
   .hero{ padding-top:112px; }
-  .moldura{ order:-1; } /* foto aparece antes do texto no celular */
+  .moldura{ order:-1; }
   .frase{ max-width:none; }
   .secao{ padding:64px 0 72px; }
   .pontos{ right:8px; gap:11px; }
@@ -486,10 +420,6 @@ img{ max-width:100%; display:block; }
   .botao-tema{ padding:7px 11px; font-size:.8rem; }
 }
 
-/* ============================================================
-   15. RESPEITAR "REDUZIR MOVIMENTO"
-   Quem configurou isso no sistema não vê nenhuma animação.
-   ============================================================ */
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{
     animation:none !important;
@@ -499,21 +429,16 @@ img{ max-width:100%; display:block; }
   .revelar{ opacity:1; transform:none; }
 }
 
-/* ============================================================
-   16. CANVAS DE CONFETE (aparece só ao clicar no nome)
-   ============================================================ */
 #confete{
   position:fixed; inset:0; z-index:70;
-  pointer-events:none; /* não atrapalha cliques na página */
+  pointer-events:none;
 }
 </style>
 </head>
 
 <body>
-  <!-- Barra de progresso de leitura -->
   <div id="progresso" aria-hidden="true"></div>
 
-  <!-- ---------- CABEÇALHO FIXO ---------- -->
   <header class="topo-fixo">
     <span class="marca"><span class="ponto"></span>Gustavo Ferreira</span>
     <button class="botao-tema" id="btn-tema" aria-pressed="false">
@@ -521,7 +446,6 @@ img{ max-width:100%; display:block; }
     </button>
   </header>
 
-  <!-- ---------- BOLINHAS DE NAVEGAÇÃO ---------- -->
   <nav class="pontos" aria-label="Navegação entre seções">
     <a href="#inicio"    class="ativo"><span class="oculto-visual">Início</span></a>
     <a href="#sobre"><span class="oculto-visual">Sobre mim</span></a>
@@ -531,24 +455,17 @@ img{ max-width:100%; display:block; }
   </nav>
 
   <main>
-    <!-- ============ TOPO / HERO ============ -->
     <section class="hero" id="inicio">
-      <!-- Carrinhos que atravessam o topo, correndo -->
       <div class="pista-carros" aria-hidden="true">
         <svg class="carrinho-passando" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
           <g transform="translate(200,0) scale(-1,1)">
             <g fill="none" stroke="var(--destaque)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-              <!-- asa dianteira -->
               <path d="M4 44 L34 44 M4 38 L34 38"/>
               <path d="M34 41 L34 34"/>
-              <!-- nariz e assoalho -->
               <path d="M34 41 C50 41 58 34 70 33 L128 33 C144 33 150 40 162 41"/>
-              <!-- cockpit e halo -->
               <path d="M78 33 C82 20 96 15 108 15 C118 15 124 20 126 27"/>
               <path d="M92 27 L118 27"/>
-              <!-- motor / retaguarda -->
               <path d="M128 33 L128 20"/>
-              <!-- asa traseira -->
               <path d="M126 15 L154 15 M126 21 L154 21"/>
               <path d="M154 15 L154 21"/>
             </g>
@@ -591,12 +508,10 @@ img{ max-width:100%; display:block; }
       </div>
       <div class="container">
         <div class="hero-grade">
-          <!-- Coluna de texto -->
           <div>
             <p class="rotulo">Guess</p>
             <h1 id="nome-clicavel" title="Clique no meu nome">Gustavo Ferreira</h1>
             <p class="frase">Obcecado pelo automobilismo e por carros.</p>
-            <!-- Somente dados que você informou -->
             <ul class="dados">
               <li>15 anos</li>
               <li>Varginha, MG</li>
@@ -604,21 +519,14 @@ img{ max-width:100%; display:block; }
             </ul>
           </div>
 
-          <!-- Coluna da foto (círculo) -->
           <figure class="moldura" style="margin:0">
-            <!--
-              Troque "foto.jpg" pelo arquivo da sua foto.
-              Se o arquivo não existir, aparece o aviso abaixo no lugar.
-            -->
             <img src="foto.jpg" alt="Foto de Gustavo Ferreira"
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
             <div class="sem-foto" role="img" aria-label="Avatar com a inicial G, de Gustavo">G</div>
           </figure>
         </div>
 
-        <!-- DETALHE EXCLUSIVO DA PÁGINA: a faixa Ferrari -->
         <div class="faixa-ferrari">
-          <!-- Carrinho desenhado à mão em SVG (não é logo de marca) -->
           <svg class="carro" viewBox="0 0 120 46" role="img" aria-label="Desenho de um carro de corrida">
             <path d="M6 32 L20 32 C24 20 34 14 50 14 L70 14 C82 14 92 20 104 24 L112 27 C116 28 116 32 112 32 L100 32"
                   fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
@@ -634,12 +542,10 @@ img{ max-width:100%; display:block; }
       </div>
     </section>
 
-    <!-- Onda de transição para a seção cinza -->
     <svg class="onda" viewBox="0 0 1440 64" preserveAspectRatio="none" aria-hidden="true">
       <path d="M0,28 C240,68 420,4 720,26 C1010,47 1220,8 1440,34 L1440,64 L0,64 Z"></path>
     </svg>
 
-    <!-- ============ SOBRE MIM ============ -->
     <section class="secao fundo-superficie" id="sobre">
       <div class="container">
         <h2 class="titulo-secao revelar">Sobre mim</h2>
@@ -658,38 +564,37 @@ img{ max-width:100%; display:block; }
       </div>
     </section>
 
-    <!-- Onda de volta para o fundo branco -->
     <svg class="onda onda--volta" viewBox="0 0 1440 64" preserveAspectRatio="none" aria-hidden="true">
       <path d="M0,34 C220,6 430,50 720,30 C1020,9 1230,58 1440,26 L1440,64 L0,64 Z"></path>
     </svg>
 
-    <!-- ============ MINHAS ENTREGAS ============ -->
     <section class="secao" id="entregas">
       <div class="container">
         <h2 class="titulo-secao revelar">Minhas entregas</h2>
         <p class="revelar">Arraste para o lado e clique em um card para ver os detalhes.</p>
       </div>
 
-      <!-- Carrossel: cada card vira ao clicar -->
       <div class="trilho" id="trilho">
 
         <!-- CARD 1 -->
-        <article class="card revelar card--resultado" role="link" tabindex="0"
-                 aria-label="Entrega 1: Capa do Meu Álbum. Clique para abrir o resultado."
-                 data-redirecionamento="capa-do-meu-album.png">
+        <article class="card revelar" tabindex="0"
+                 aria-label="Entrega 1: Capa do Meu Álbum">
           <div class="card-interno">
             <div class="face">
               <span class="numero">01</span>
               <h3>Capa do Meu Álbum</h3>
               <p class="data">[PREENCHER — data]</p>
-              <p class="aprendi"></p>
+              <p class="aprendi">Material da disciplina de Autoconhecimento feito com a ajuda de IA.</p>
               <span class="selo">Concluída</span>
-              <p class="dica-virar">Clique para abrir o resultado</p>
+              <div class="acoes-card">
+                <a class="link" href="capa-do-meu-album.png" target="_blank" rel="noopener noreferrer">Ver resultado</a>
+                <a class="link" href="https://github.com/GusFerreira1/Capa-do-meu-album" target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
+              </div>
             </div>
           </div>
         </article>
 
-        <!-- CARD 2 — ainda não entregue -->
+        <!-- CARD 2 -->
         <article class="card card--breve revelar" role="button" tabindex="0"
                  aria-label="Entrega 2: Dashboard Quem Sou Eu, em breve">
           <div class="card-interno">
@@ -709,7 +614,7 @@ img{ max-width:100%; display:block; }
           </div>
         </article>
 
-        <!-- CARD 3 — ainda não entregue -->
+        <!-- CARD 3 -->
         <article class="card card--breve revelar" role="button" tabindex="0"
                  aria-label="Entrega 3: Árvore das Profissões 2.0, em breve">
           <div class="card-interno">
@@ -729,7 +634,7 @@ img{ max-width:100%; display:block; }
           </div>
         </article>
 
-        <!-- CARD 4 — exemplo de "Em breve": apagado e sem link -->
+        <!-- CARD 4 -->
         <article class="card card--breve revelar" role="button" tabindex="0" aria-label="Entrega 4: Âncoras de Carreira, em breve">
           <div class="card-interno">
             <div class="face">
@@ -748,7 +653,7 @@ img{ max-width:100%; display:block; }
           </div>
         </article>
 
-        <!-- CARD 5 — exemplo de "Em breve" -->
+        <!-- CARD 5 -->
         <article class="card card--breve revelar" role="button" tabindex="0" aria-label="Entrega 5: Manifesto, em breve">
           <div class="card-interno">
             <div class="face">
@@ -770,17 +675,14 @@ img{ max-width:100%; display:block; }
       </div>
     </section>
 
-    <!-- Onda para a seção do manifesto -->
     <svg class="onda" viewBox="0 0 1440 64" preserveAspectRatio="none" aria-hidden="true">
       <path d="M0,30 C260,60 440,6 720,28 C1000,50 1210,6 1440,32 L1440,64 L0,64 Z"></path>
     </svg>
 
-    <!-- ============ MANIFESTO ============ -->
     <section class="secao fundo-superficie" id="manifesto">
       <div class="container">
         <h2 class="titulo-secao revelar">Manifesto</h2>
         <div class="caixa-manifesto revelar">
-          <!-- O texto começa recolhido; o botão abaixo expande -->
           <div class="texto-manifesto" id="texto-manifesto">
             <p>[MANIFESTO AQUI]</p>
             <p>[MANIFESTO AQUI — texto de 400 a 600 palavras escrito por você]</p>
@@ -794,10 +696,8 @@ img{ max-width:100%; display:block; }
     </section>
   </main>
 
-  <!-- Canvas usado só pela animação de confete, ao clicar no nome -->
   <canvas id="confete" aria-hidden="true"></canvas>
 
-  <!-- ============ RODAPÉ ============ -->
   <footer class="rodape" id="contato">
     <div class="container rodape-grade">
       <div>
@@ -810,7 +710,6 @@ img{ max-width:100%; display:block; }
         </p>
       </div>
       <div>
-        <!-- Segundo detalhe pessoal: a música -->
         <p class="tocando">
           <span class="equalizador" aria-hidden="true"><span></span><span></span><span></span></span>
           Highest in the Room
@@ -823,17 +722,8 @@ img{ max-width:100%; display:block; }
   </footer>
 
 <script>
-/* ============================================================
-   JAVASCRIPT — cada bloco está comentado em português
-   ============================================================ */
-
-/* Descobre se a pessoa pediu para reduzir movimento no sistema */
 const semMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* ------------------------------------------------------------
-   1. BARRA DE PROGRESSO DE LEITURA
-   Calcula quanto da página já foi rolada (0 a 1) e estica a barra.
------------------------------------------------------------- */
 const barra = document.getElementById("progresso");
 function atualizarProgresso(){
   const total = document.documentElement.scrollHeight - window.innerHeight;
@@ -844,10 +734,6 @@ window.addEventListener("scroll", atualizarProgresso, { passive:true });
 window.addEventListener("resize", atualizarProgresso);
 atualizarProgresso();
 
-/* ------------------------------------------------------------
-   2. BOTÃO DE TEMA CLARO/ESCURO
-   Troca o atributo data-tema do <html>, o que troca as variáveis CSS.
------------------------------------------------------------- */
 const btnTema = document.getElementById("btn-tema");
 const rotuloTema = document.getElementById("rotulo-tema");
 
@@ -857,7 +743,6 @@ function aplicarTema(tema){
   rotuloTema.textContent = escuro ? "Tema claro" : "Tema escuro";
   btnTema.setAttribute("aria-pressed", String(escuro));
 }
-/* Começa seguindo a preferência do sistema */
 aplicarTema(window.matchMedia("(prefers-color-scheme: dark)").matches ? "escuro" : "claro");
 
 btnTema.addEventListener("click", () => {
@@ -865,28 +750,20 @@ btnTema.addEventListener("click", () => {
   aplicarTema(atual === "escuro" ? "claro" : "escuro");
 });
 
-/* ------------------------------------------------------------
-   3. ANIMAÇÃO AO ROLAR — os elementos aparecem em sequência
-   O IntersectionObserver avisa quando o elemento entra na tela.
------------------------------------------------------------- */
 const paraRevelar = document.querySelectorAll(".revelar");
 const observador = new IntersectionObserver((entradas) => {
   let ordem = 0;
   entradas.forEach((entrada) => {
     if(!entrada.isIntersecting) return;
-    /* atraso crescente = um de cada vez, em sequência */
     entrada.target.style.transitionDelay = semMovimento ? "0ms" : (ordem * 120) + "ms";
     entrada.target.classList.add("visivel");
-    observador.unobserve(entrada.target); /* anima só uma vez */
+    observador.unobserve(entrada.target);
     ordem++;
   });
 }, { threshold:0.18, rootMargin:"0px 0px -8% 0px" });
 
 paraRevelar.forEach(el => observador.observe(el));
 
-/* ------------------------------------------------------------
-   4. BOLINHAS DA LATERAL — marcam a seção que está na tela
------------------------------------------------------------- */
 const bolinhas = document.querySelectorAll(".pontos a");
 const secoes = [...bolinhas].map(b => document.querySelector(b.getAttribute("href")));
 
@@ -900,10 +777,6 @@ const observadorSecao = new IntersectionObserver((entradas) => {
 
 secoes.forEach(s => s && observadorSecao.observe(s));
 
-/* ------------------------------------------------------------
-   5. CARROSSEL — arrastar com o mouse para o lado
-   (no celular o dedo já rola sozinho, então isso é só para o mouse)
------------------------------------------------------------- */
 const trilho = document.getElementById("trilho");
 let arrastando = false, xInicial = 0, scrollInicial = 0, distancia = 0;
 
@@ -927,39 +800,14 @@ function pararArraste(){
 trilho.addEventListener("pointerup", pararArraste);
 trilho.addEventListener("pointerleave", pararArraste);
 
-/* ------------------------------------------------------------
-   6. VIRA-CARD + INCLINAÇÃO 3D NO MOUSE
------------------------------------------------------------- */
 document.querySelectorAll(".card").forEach((card) => {
-
-  /* A Capa do Meu Álbum abre diretamente o resultado entregue. */
-  if(card.dataset.redirecionamento){
-    const abrirResultado = () => {
-      window.location.href = card.dataset.redirecionamento;
-    };
+  if(card.classList.contains("card--breve")){
     card.addEventListener("click", (e) => {
       if(distancia > 6) return;
-      abrirResultado();
-    });
-    card.addEventListener("keydown", (e) => {
-      if(e.key === "Enter" || e.key === " "){
-        e.preventDefault();
-        abrirResultado();
-      }
-    });
-  }
-
-  /* Clique vira o card — mas ignora o clique se a pessoa estava arrastando */
-  if(!card.dataset.redirecionamento){
-    card.addEventListener("click", (e) => {
-    if(distancia > 6) return;
-    if(e.target.closest("a")) return; /* clique no link não vira o card */
+      if(e.target.closest("a")) return;
       card.classList.toggle("virado");
     });
-  }
 
-  /* Teclado: Enter ou Espaço também viram o card (acessibilidade) */
-  if(!card.dataset.redirecionamento){
     card.addEventListener("keydown", (e) => {
       if(e.key === "Enter" || e.key === " "){
         e.preventDefault();
@@ -968,12 +816,11 @@ document.querySelectorAll(".card").forEach((card) => {
     });
   }
 
-  /* Inclinação 3D acompanhando o mouse */
   if(semMovimento) return;
   card.addEventListener("pointermove", (e) => {
     if(e.pointerType !== "mouse" || arrastando) return;
     const r = card.getBoundingClientRect();
-    const px = (e.clientX - r.left) / r.width  - .5; /* -0.5 a 0.5 */
+    const px = (e.clientX - r.left) / r.width  - .5;
     const py = (e.clientY - r.top)  / r.height - .5;
     card.style.transform =
       "rotateY(" + (px * 12) + "deg) rotateX(" + (-py * 12) + "deg) translateZ(6px)";
@@ -981,11 +828,6 @@ document.querySelectorAll(".card").forEach((card) => {
   card.addEventListener("pointerleave", () => { card.style.transform = ""; });
 });
 
-/* ------------------------------------------------------------
-   7. CONFETE AO CLICAR NO NOME
-   Desenha retângulos coloridos caindo com a física de queda livre.
-   Usa as cores da paleta do site (azul, vermelho e cinza).
------------------------------------------------------------- */
 const nome = document.getElementById("nome-clicavel");
 const canvas = document.getElementById("confete");
 const ctx = canvas.getContext("2d");
@@ -1007,8 +849,8 @@ function criarConfete(origemX, origemY){
     pedacos.push({
       x: origemX,
       y: origemY,
-      vx: (Math.random() - .5) * 11,           /* velocidade horizontal */
-      vy: Math.random() * -11 - 4,              /* impulso inicial para cima */
+      vx: (Math.random() - .5) * 11,
+      vy: Math.random() * -11 - 4,
       giro: Math.random() * Math.PI,
       velGiro: (Math.random() - .5) * .35,
       largura: 6 + Math.random() * 5,
@@ -1042,7 +884,6 @@ function passoConfete(){
     ctx.restore();
   });
 
-  /* remove os que já saíram da tela ou já duraram tempo suficiente */
   pedacos = pedacos.filter(p => p.y < canvas.height + 40 && p.vida < 260);
 
   if(pedacos.length > 0){
@@ -1059,7 +900,6 @@ nome.addEventListener("click", () => {
   const origemY = r.top + r.height / 2;
 
   if(semMovimento){
-    /* com "reduzir movimento" ativado, mostra o confete parado, sem física */
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     for(let i = 0; i < 40; i++){
       ctx.fillStyle = coresConfete[i % coresConfete.length];
@@ -1071,9 +911,6 @@ nome.addEventListener("click", () => {
   criarConfete(origemX, origemY);
 });
 
-/* ------------------------------------------------------------
-   8. MANIFESTO RECOLHIDO — botão abre e fecha o texto
------------------------------------------------------------- */
 const textoManifesto = document.getElementById("texto-manifesto");
 const btnManifesto = document.getElementById("btn-manifesto");
 
