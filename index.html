@@ -331,6 +331,13 @@ img{ max-width:100%; display:block; }
 .acoes-card .link{
   font-size:.82rem;
 }
+.imagem-entrega{
+  width:100%;
+  height:112px;
+  object-fit:contain;
+  margin:0 auto 8px;
+  border-radius:8px;
+}
 .selo{
   align-self:flex-start; margin-top:auto;
   font-size:.76rem; font-weight:600;
@@ -433,6 +440,106 @@ img{ max-width:100%; display:block; }
   position:fixed; inset:0; z-index:70;
   pointer-events:none;
 }
+
+/* ===== NOVO LAYOUT DAS ENTREGAS: cartões em duas colunas ===== */
+.entregas-grade{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+  gap:24px;
+  margin-top:28px;
+}
+.entrega-card{
+  display:grid;
+  grid-template-columns:minmax(150px, 40%) minmax(0, 1fr);
+  gap:16px;
+  align-items:start;
+  min-height:260px;
+  padding:14px;
+  background:var(--fundo);
+  border:1px solid var(--borda);
+  border-radius:var(--raio);
+  box-shadow:var(--sombra);
+}
+.entrega-foto{
+  width:100%;
+  height:100%;
+  min-height:230px;
+  max-height:300px;
+  object-fit:cover;
+  object-position:center;
+  border-radius:8px;
+  background:var(--secundaria);
+}
+.entrega-conteudo{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  min-width:0;
+  padding:4px 2px;
+}
+.entrega-conteudo h3{
+  margin:10px 0 14px;
+  font-size:1.15rem;
+}
+.entrega-data{
+  color:var(--primaria);
+  font-size:.78rem;
+  font-weight:600;
+}
+.entrega-conteudo .data{
+  margin:0 0 12px;
+}
+.entrega-conteudo .aprendi{
+  flex:1;
+  margin:0 0 14px;
+  font-size:.88rem;
+  line-height:1.55;
+}
+.entrega-conteudo .selo{
+  margin:0 0 12px;
+}
+.entrega-conteudo .link{
+  font-size:.86rem;
+  margin-top:auto;
+}
+.entrega-imagem-vazia{
+  min-height:230px;
+  display:grid;
+  place-items:center;
+  border-radius:8px;
+  background:var(--secundaria);
+  color:var(--texto-suave);
+  font:700 3rem "Space Grotesk",sans-serif;
+}
+.entrega-em-breve{
+  opacity:.78;
+}
+@media (max-width: 850px){
+  .entregas-grade{ grid-template-columns:1fr; }
+  .entrega-card{ grid-template-columns:minmax(130px, 36%) minmax(0,1fr); }
+}
+@media (max-width: 520px){
+  .entrega-card{
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+  .entrega-foto,.entrega-imagem-vazia{
+    min-height:190px;
+    max-height:250px;
+  }
+}
+
+
+/* Imagens completas para trabalhos em formato paisagem ou diagrama */
+.entrega-foto-inteira{
+  object-fit:contain !important;
+  object-position:center;
+  background:#f5f5f5;
+  height:230px;
+  min-height:230px;
+  max-height:230px;
+}
+
 </style>
 </head>
 
@@ -571,107 +678,104 @@ img{ max-width:100%; display:block; }
     <section class="secao" id="entregas">
       <div class="container">
         <h2 class="titulo-secao revelar">Minhas entregas</h2>
-        <p class="revelar">Arraste para o lado e clique em um card para ver os detalhes.</p>
-      </div>
+        <p class="revelar">Registro dos trabalhos desenvolvidos ao longo do curso.</p>
 
-      <div class="trilho" id="trilho">
+        <div class="entregas-grade">
 
-        <!-- CARD 1 -->
-        <article class="card revelar" tabindex="0"
-                 aria-label="Entrega 1: Capa do Meu Álbum">
-          <div class="card-interno">
-            <div class="face">
-              <span class="numero">01</span>
+          <!-- CARD 1 -->
+          <article class="entrega-card revelar">
+            <img class="entrega-foto" src="capa-do-meu-album.webp"
+                 alt="Capa do álbum Só Sei Que Nada Sei">
+            <div class="entrega-conteudo">
+              <span class="entrega-data">Entrega 17/10/2026</span>
               <h3>Capa do Meu Álbum</h3>
-              <p class="data">[PREENCHER — data]</p>
-              <p class="aprendi">Material da disciplina de Autoconhecimento feito com a ajuda de IA.</p>
+              <p class="data">17/10/2026</p>
+              <p class="aprendi">Criação de uma identidade visual que reúne minhas crenças, meus valores, minhas inspirações e meus objetivos pessoais.</p>
               <span class="selo">Concluída</span>
-              <div class="acoes-card">
-                <a class="link" href="capa-do-meu-album.png" target="_blank" rel="noopener noreferrer">Ver resultado</a>
-                <a class="link" href="https://github.com/GusFerreira1/Capa-do-meu-album" target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
-              </div>
+              <a class="link" href="https://github.com/GusFerreira1/Capa-do-meu-album"
+                 target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
             </div>
-          </div>
-        </article>
+          </article>
 
-        <!-- CARD 2 -->
-        <article class="card card--breve revelar" role="button" tabindex="0"
-                 aria-label="Entrega 2: Dashboard Quem Sou Eu, em breve">
-          <div class="card-interno">
-            <div class="face">
-              <span class="numero">02</span>
-              <h3>Dashboard Quem Sou Eu</h3>
-              <p class="data">[PREENCHER — data]</p>
-              <p class="aprendi"></p>
-              <span class="selo">Em breve</span>
-              <p class="dica-virar">Clique para ver detalhes</p>
-            </div>
-            <div class="face face--verso">
-              <h3>Ainda não entregue</h3>
-              <p class="aprendi">[PREENCHER — o que você aprendeu, quando entregar]</p>
-              <span class="selo">Em breve</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- CARD 3 -->
-        <article class="card card--breve revelar" role="button" tabindex="0"
-                 aria-label="Entrega 3: Árvore das Profissões 2.0, em breve">
-          <div class="card-interno">
-            <div class="face">
-              <span class="numero">03</span>
+          <!-- CARD 2 -->
+          <article class="entrega-card revelar">
+            <img class="entrega-foto entrega-foto-inteira" src="arvore-das-profissoes.webp"
+                 alt="Projeto Árvore das Profissões 2.0">
+            <div class="entrega-conteudo">
+              <span class="entrega-data">Entrega 25/11/2026</span>
               <h3>Árvore das Profissões 2.0</h3>
-              <p class="data">[PREENCHER — data]</p>
-              <p class="aprendi"></p>
-              <span class="selo">Em breve</span>
-              <p class="dica-virar">Clique para ver detalhes</p>
+              <p class="data">25/11/2026</p>
+              <p class="aprendi">Mapeamento das profissões presentes na família e pesquisa com fontes reais sobre os impactos da inteligência artificial no mercado de trabalho.</p>
+              <span class="selo">Concluída</span>
+              <a class="link" href="https://github.com/GusFerreira1/arvore-das-profissoes"
+                 target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
             </div>
-            <div class="face face--verso">
-              <h3>Ainda não entregue</h3>
-              <p class="aprendi">[PREENCHER — o que você aprendeu, quando entregar]</p>
-              <span class="selo">Em breve</span>
-            </div>
-          </div>
-        </article>
+          </article>
 
-        <!-- CARD 4 -->
-        <article class="card card--breve revelar" role="button" tabindex="0" aria-label="Entrega 4: Âncoras de Carreira, em breve">
-          <div class="card-interno">
-            <div class="face">
-              <span class="numero">04</span>
+          <!-- CARD MUNDO SENAI -->
+          <article class="entrega-card revelar">
+            <img class="entrega-foto entrega-foto-inteira" src="mundo-senai-2026.webp"
+                 alt="Imagem do projeto de lógica do Mundo SENAI 2026">
+            <div class="entrega-conteudo">
+              <span class="entrega-data">Projeto 2026</span>
+              <h3>Mundo SENAI 2026</h3>
+              <p class="data">2026</p>
+              <p class="aprendi">Registro da participação no Mundo SENAI 2026 e das atividades desenvolvidas durante o evento.</p>
+              <span class="selo">Concluída</span>
+              <a class="link" href="https://github.com/GusFerreira1/mundo-senai-2026"
+                 target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
+            </div>
+          </article>
+
+          <!-- CARD JANELA DE JOHARI -->
+          <article class="entrega-card revelar">
+            <img class="entrega-foto entrega-foto-inteira" src="janela-de-johari.webp"
+                 alt="Atividade Janela de Johari">
+            <div class="entrega-conteudo">
+              <span class="entrega-data">Entrega 12/11/2026</span>
+              <h3>Janela de Johari</h3>
+              <p class="data">12/11/2026</p>
+              <p class="aprendi">Atividade de autoconhecimento que apresenta características que reconheço em mim e características percebidas pelas outras pessoas.</p>
+              <span class="selo">Concluída</span>
+              <a class="link" href="https://github.com/GusFerreira1/janela-de-johari"
+                 target="_blank" rel="noopener noreferrer">Ver no GitHub</a>
+            </div>
+          </article>
+
+          <!-- CARD 3 -->
+          <article class="entrega-card entrega-em-breve revelar">
+            <div class="entrega-imagem-vazia"><span>03</span></div>
+            <div class="entrega-conteudo">
+              <span class="entrega-data">Próxima entrega</span>
+              <h3>Dashboard Quem Sou Eu</h3>
+              <p class="aprendi">Este trabalho será adicionado aqui quando estiver concluído.</p>
+              <span class="selo">Em breve</span>
+            </div>
+          </article>
+
+          <!-- CARD 4 -->
+          <article class="entrega-card entrega-em-breve revelar">
+            <div class="entrega-imagem-vazia"><span>04</span></div>
+            <div class="entrega-conteudo">
+              <span class="entrega-data">Próxima entrega</span>
               <h3>Âncoras de Carreira</h3>
-              <p class="data">[PREENCHER — data]</p>
-              <p class="aprendi"></p>
-              <span class="selo">Em breve</span>
-              <p class="dica-virar">Clique para ver detalhes</p>
-            </div>
-            <div class="face face--verso">
-              <h3>Ainda não entregue</h3>
-              <p class="aprendi">[PREENCHER — o que você aprendeu, quando entregar]</p>
+              <p class="aprendi">Este trabalho será adicionado aqui quando estiver concluído.</p>
               <span class="selo">Em breve</span>
             </div>
-          </div>
-        </article>
+          </article>
 
-        <!-- CARD 5 -->
-        <article class="card card--breve revelar" role="button" tabindex="0" aria-label="Entrega 5: Manifesto, em breve">
-          <div class="card-interno">
-            <div class="face">
-              <span class="numero">05</span>
+          <!-- CARD 5 -->
+          <article class="entrega-card entrega-em-breve revelar">
+            <div class="entrega-imagem-vazia"><span>05</span></div>
+            <div class="entrega-conteudo">
+              <span class="entrega-data">Próxima entrega</span>
               <h3>Manifesto</h3>
-              <p class="data">[PREENCHER — data]</p>
-              <p class="aprendi"></p>
-              <span class="selo">Em breve</span>
-              <p class="dica-virar">Clique para ver detalhes</p>
-            </div>
-            <div class="face face--verso">
-              <h3>Ainda não entregue</h3>
-              <p class="aprendi">[PREENCHER — o que você aprendeu, quando entregar]</p>
+              <p class="aprendi">Este trabalho será adicionado aqui quando estiver concluído.</p>
               <span class="selo">Em breve</span>
             </div>
-          </div>
-        </article>
+          </article>
 
+        </div>
       </div>
     </section>
 
