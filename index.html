@@ -562,10 +562,104 @@ img{ max-width:100%; display:block; }
 }
 .entrega-card .link:hover,.entrega-card .link:focus-visible{background:var(--primaria);color:white;border-color:var(--primaria);}
 @media(prefers-reduced-motion:reduce){.entrega-card,.entrega-card .entrega-foto,.entrega-card .link{transition:none!important;}}
+/* Carros de F1 decorativos em toda a página */
+body{isolation:isolate;}
+.f1-fundo{position:fixed;inset:0;z-index:2;pointer-events:none;overflow:hidden;}
+.f1-fundo-carro{position:absolute;left:-150px;width:100px;opacity:.13;animation:f1-fundo-corrida 22s linear infinite;}
+.f1-fundo-carro:nth-child(1){top:13%;animation-delay:-3s;}
+.f1-fundo-carro:nth-child(2){top:32%;width:76px;animation-duration:29s;animation-delay:-19s;}
+.f1-fundo-carro:nth-child(3){top:51%;width:110px;animation-duration:25s;animation-delay:-12s;}
+.f1-fundo-carro:nth-child(4){top:73%;width:85px;animation-duration:32s;animation-delay:-7s;}
+.f1-fundo-carro:nth-child(5){top:91%;width:95px;animation-duration:24s;animation-delay:-20s;}
+@keyframes f1-fundo-corrida{from{transform:translateX(0);}to{transform:translateX(calc(100vw + 300px));}}
+main .container,footer .container{position:relative;z-index:3;}
+.pista-carros{display:none;}
+@media(max-width:650px){.f1-fundo-carro{opacity:.09;width:65px;}.f1-fundo-carro:nth-child(even){display:none;}}
+@media(prefers-reduced-motion:reduce){.f1-fundo{display:none;}}
 </style>
 </head>
 
 <body>
+<div class="f1-fundo" aria-hidden="true"><svg class="f1-fundo-carro" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(200,0) scale(-1,1)">
+            <g fill="none" stroke="var(--destaque)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 44 L34 44 M4 38 L34 38"/>
+              <path d="M34 41 L34 34"/>
+              <path d="M34 41 C50 41 58 34 70 33 L128 33 C144 33 150 40 162 41"/>
+              <path d="M78 33 C82 20 96 15 108 15 C118 15 124 20 126 27"/>
+              <path d="M92 27 L118 27"/>
+              <path d="M128 33 L128 20"/>
+              <path d="M126 15 L154 15 M126 21 L154 21"/>
+              <path d="M154 15 L154 21"/>
+            </g>
+            <circle cx="52" cy="46" r="9" fill="none" stroke="var(--destaque)" stroke-width="4"/>
+            <circle cx="146" cy="46" r="9" fill="none" stroke="var(--destaque)" stroke-width="4"/>
+          </g>
+        </svg>
+<svg class="f1-fundo-carro" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(200,0) scale(-1,1)">
+            <g fill="none" stroke="var(--primaria)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 44 L34 44 M4 38 L34 38"/>
+              <path d="M34 41 L34 34"/>
+              <path d="M34 41 C50 41 58 34 70 33 L128 33 C144 33 150 40 162 41"/>
+              <path d="M78 33 C82 20 96 15 108 15 C118 15 124 20 126 27"/>
+              <path d="M92 27 L118 27"/>
+              <path d="M128 33 L128 20"/>
+              <path d="M126 15 L154 15 M126 21 L154 21"/>
+              <path d="M154 15 L154 21"/>
+            </g>
+            <circle cx="52" cy="46" r="9" fill="none" stroke="var(--primaria)" stroke-width="4"/>
+            <circle cx="146" cy="46" r="9" fill="none" stroke="var(--primaria)" stroke-width="4"/>
+          </g>
+        </svg>
+<svg class="f1-fundo-carro" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(200,0) scale(-1,1)">
+            <g fill="none" stroke="var(--destaque)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 44 L34 44 M4 38 L34 38"/>
+              <path d="M34 41 L34 34"/>
+              <path d="M34 41 C50 41 58 34 70 33 L128 33 C144 33 150 40 162 41"/>
+              <path d="M78 33 C82 20 96 15 108 15 C118 15 124 20 126 27"/>
+              <path d="M92 27 L118 27"/>
+              <path d="M128 33 L128 20"/>
+              <path d="M126 15 L154 15 M126 21 L154 21"/>
+              <path d="M154 15 L154 21"/>
+            </g>
+            <circle cx="52" cy="46" r="9" fill="none" stroke="var(--destaque)" stroke-width="4"/>
+            <circle cx="146" cy="46" r="9" fill="none" stroke="var(--destaque)" stroke-width="4"/>
+          </g>
+        </svg>
+<svg class="f1-fundo-carro" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(200,0) scale(-1,1)">
+            <g fill="none" stroke="var(--primaria)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 44 L34 44 M4 38 L34 38"/>
+              <path d="M34 41 L34 34"/>
+              <path d="M34 41 C50 41 58 34 70 33 L128 33 C144 33 150 40 162 41"/>
+              <path d="M78 33 C82 20 96 15 108 15 C118 15 124 20 126 27"/>
+              <path d="M92 27 L118 27"/>
+              <path d="M128 33 L128 20"/>
+              <path d="M126 15 L154 15 M126 21 L154 21"/>
+              <path d="M154 15 L154 21"/>
+            </g>
+            <circle cx="52" cy="46" r="9" fill="none" stroke="var(--primaria)" stroke-width="4"/>
+            <circle cx="146" cy="46" r="9" fill="none" stroke="var(--primaria)" stroke-width="4"/>
+          </g>
+        </svg>
+<svg class="f1-fundo-carro" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(200,0) scale(-1,1)">
+            <g fill="none" stroke="var(--destaque)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 44 L34 44 M4 38 L34 38"/>
+              <path d="M34 41 L34 34"/>
+              <path d="M34 41 C50 41 58 34 70 33 L128 33 C144 33 150 40 162 41"/>
+              <path d="M78 33 C82 20 96 15 108 15 C118 15 124 20 126 27"/>
+              <path d="M92 27 L118 27"/>
+              <path d="M128 33 L128 20"/>
+              <path d="M126 15 L154 15 M126 21 L154 21"/>
+              <path d="M154 15 L154 21"/>
+            </g>
+            <circle cx="52" cy="46" r="9" fill="none" stroke="var(--destaque)" stroke-width="4"/>
+            <circle cx="146" cy="46" r="9" fill="none" stroke="var(--destaque)" stroke-width="4"/>
+          </g>
+        </svg></div>
   <div id="progresso" aria-hidden="true"></div>
 
   <header class="topo-fixo">
