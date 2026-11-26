@@ -684,7 +684,7 @@ img{ max-width:100%; display:block; }
 
           <!-- CARD 1 -->
           <article class="entrega-card revelar">
-            <img class="entrega-foto" src="capa-do-meu-album.webp"
+            <img class="entrega-foto entrega-foto-inteira" src="./capa-do-meu-album.webp"
                  alt="Capa do álbum Só Sei Que Nada Sei">
             <div class="entrega-conteudo">
               <span class="entrega-data">Entrega 17/10/2026</span>
@@ -699,7 +699,7 @@ img{ max-width:100%; display:block; }
 
           <!-- CARD 2 -->
           <article class="entrega-card revelar">
-            <img class="entrega-foto entrega-foto-inteira" src="arvore-das-profissoes.webp"
+            <img class="entrega-foto entrega-foto-inteira" src="./arvore-das-profissoes.webp"
                  alt="Projeto Árvore das Profissões 2.0">
             <div class="entrega-conteudo">
               <span class="entrega-data">Entrega 25/11/2026</span>
@@ -714,7 +714,7 @@ img{ max-width:100%; display:block; }
 
           <!-- CARD MUNDO SENAI -->
           <article class="entrega-card revelar">
-            <img class="entrega-foto entrega-foto-inteira" src="mundo-senai-2026.webp"
+            <img class="entrega-foto entrega-foto-inteira" src="./mundo-senai-2026.webp"
                  alt="Imagem do projeto de lógica do Mundo SENAI 2026">
             <div class="entrega-conteudo">
               <span class="entrega-data">Projeto 2026</span>
@@ -729,7 +729,7 @@ img{ max-width:100%; display:block; }
 
           <!-- CARD JANELA DE JOHARI -->
           <article class="entrega-card revelar">
-            <img class="entrega-foto entrega-foto-inteira" src="janela-de-johari.webp"
+            <img class="entrega-foto entrega-foto-inteira" src="./janela-de-johari.webp"
                  alt="Atividade Janela de Johari">
             <div class="entrega-conteudo">
               <span class="entrega-data">Entrega 12/11/2026</span>
@@ -882,6 +882,7 @@ const observadorSecao = new IntersectionObserver((entradas) => {
 secoes.forEach(s => s && observadorSecao.observe(s));
 
 const trilho = document.getElementById("trilho");
+if (trilho) {
 let arrastando = false, xInicial = 0, scrollInicial = 0, distancia = 0;
 
 trilho.addEventListener("pointerdown", (e) => {
@@ -903,6 +904,7 @@ function pararArraste(){
 }
 trilho.addEventListener("pointerup", pararArraste);
 trilho.addEventListener("pointerleave", pararArraste);
+}
 
 document.querySelectorAll(".card").forEach((card) => {
   if(card.classList.contains("card--breve")){
