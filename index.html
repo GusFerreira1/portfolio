@@ -540,6 +540,15 @@ img{ max-width:100%; display:block; }
   max-height:230px;
 }
 
+/* Galeria de trabalhos */
+.entregas-grade{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 28px;}
+.entrega-card{display:flex;flex-direction:column;gap:0;padding:0;min-height:0;border:0;border-radius:0;box-shadow:none;background:transparent;border-bottom:1px solid var(--borda);padding-bottom:22px;}
+.entrega-card .entrega-foto{width:100%;height:auto;aspect-ratio:4/3;min-height:0;max-height:none;object-fit:contain!important;background:var(--secundaria);border-radius:6px;}
+.entrega-conteudo{padding:16px 0 0;flex:1;width:100%;}
+.entrega-conteudo h3{margin:6px 0 10px;font-size:1.2rem;}
+.entrega-conteudo .selo{display:none;}
+.entrega-conteudo .link{margin-top:6px;}
+@media(max-width:650px){.entregas-grade{grid-template-columns:1fr;gap:24px;}}
 </style>
 </head>
 
@@ -689,7 +698,7 @@ img{ max-width:100%; display:block; }
             <div class="entrega-conteudo">
               <span class="entrega-data">Entrega 17/10/2026</span>
               <h3>Capa do Meu Álbum</h3>
-              <p class="data">17/10/2026</p>
+              
               <p class="aprendi">Criação de uma identidade visual que reúne minhas crenças, meus valores, minhas inspirações e meus objetivos pessoais.</p>
               <span class="selo">Concluída</span>
               <a class="link" href="https://github.com/GusFerreira1/Capa-do-meu-album"
@@ -704,7 +713,7 @@ img{ max-width:100%; display:block; }
             <div class="entrega-conteudo">
               <span class="entrega-data">Entrega 25/11/2026</span>
               <h3>Árvore das Profissões 2.0</h3>
-              <p class="data">25/11/2026</p>
+              
               <p class="aprendi">Mapeamento das profissões presentes na família e pesquisa com fontes reais sobre os impactos da inteligência artificial no mercado de trabalho.</p>
               <span class="selo">Concluída</span>
               <a class="link" href="https://github.com/GusFerreira1/arvore-das-profissoes"
@@ -719,7 +728,7 @@ img{ max-width:100%; display:block; }
             <div class="entrega-conteudo">
               <span class="entrega-data">Projeto 2026</span>
               <h3>Mundo SENAI 2026</h3>
-              <p class="data">2026</p>
+              
               <p class="aprendi">Registro da participação no Mundo SENAI 2026 e das atividades desenvolvidas durante o evento.</p>
               <span class="selo">Concluída</span>
               <a class="link" href="https://github.com/GusFerreira1/mundo-senai-2026"
@@ -734,7 +743,7 @@ img{ max-width:100%; display:block; }
             <div class="entrega-conteudo">
               <span class="entrega-data">Entrega 12/11/2026</span>
               <h3>Janela de Johari</h3>
-              <p class="data">12/11/2026</p>
+              
               <p class="aprendi">Atividade de autoconhecimento que apresenta características que reconheço em mim e características percebidas pelas outras pessoas.</p>
               <span class="selo">Concluída</span>
               <a class="link" href="https://github.com/GusFerreira1/janela-de-johari"
@@ -742,38 +751,6 @@ img{ max-width:100%; display:block; }
             </div>
           </article>
 
-          <!-- CARD 3 -->
-          <article class="entrega-card entrega-em-breve revelar">
-            <div class="entrega-imagem-vazia"><span>03</span></div>
-            <div class="entrega-conteudo">
-              <span class="entrega-data">Próxima entrega</span>
-              <h3>Dashboard Quem Sou Eu</h3>
-              <p class="aprendi">Este trabalho será adicionado aqui quando estiver concluído.</p>
-              <span class="selo">Em breve</span>
-            </div>
-          </article>
-
-          <!-- CARD 4 -->
-          <article class="entrega-card entrega-em-breve revelar">
-            <div class="entrega-imagem-vazia"><span>04</span></div>
-            <div class="entrega-conteudo">
-              <span class="entrega-data">Próxima entrega</span>
-              <h3>Âncoras de Carreira</h3>
-              <p class="aprendi">Este trabalho será adicionado aqui quando estiver concluído.</p>
-              <span class="selo">Em breve</span>
-            </div>
-          </article>
-
-          <!-- CARD 5 -->
-          <article class="entrega-card entrega-em-breve revelar">
-            <div class="entrega-imagem-vazia"><span>05</span></div>
-            <div class="entrega-conteudo">
-              <span class="entrega-data">Próxima entrega</span>
-              <h3>Manifesto</h3>
-              <p class="aprendi">Este trabalho será adicionado aqui quando estiver concluído.</p>
-              <span class="selo">Em breve</span>
-            </div>
-          </article>
 
         </div>
       </div>
@@ -882,8 +859,8 @@ const observadorSecao = new IntersectionObserver((entradas) => {
 secoes.forEach(s => s && observadorSecao.observe(s));
 
 const trilho = document.getElementById("trilho");
-if (trilho) {
 let arrastando = false, xInicial = 0, scrollInicial = 0, distancia = 0;
+if (trilho) {
 
 trilho.addEventListener("pointerdown", (e) => {
   if(e.pointerType !== "mouse") return;
